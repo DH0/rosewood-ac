@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rosewood Academy | PhD Clubs Network</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rosewood: #65000b;
+      --copper: #B07A5A;
+      --parchment: #F4EFEA;
+      --navy: #1A222E;
+    }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: var(--parchment);
+      color: var(--navy);
+    }
+    .font-serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .bg-parchment { background-color: var(--parchment); }
+    .text-rosewood { color: var(--rosewood); }
+    .bg-rosewood { background-color: var(--rosewood); }
+    .text-copper { color: var(--copper); }
+    .border-copper { border-color: var(--copper); }
+    
+    /* Subtle paper texture overlay */
+    .paper-texture {
+      position: relative;
+    }
+    .paper-texture::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+      z-index: 100;
+    }
+  </style>
+
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-B0rbUU9J.js"></script>
+</head>
+<body class="paper-texture">
+  <div id="root"></div>
+</body>
+</html>
