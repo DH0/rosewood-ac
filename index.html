@@ -1,295 +1,65 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rosewood Academy</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<style>
-		:root {
-			--bg: #0a0e1a;
-			--panel: rgba(255, 255, 255, 0.05);
-			--accent: #f8b195;
-			--accent-2: #87e1c5;
-			--text: #f6f7fb;
-			--muted: #c4c8d8;
-			--shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-			--radius: 18px;
-		}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rosewood Academy | PhD Clubs Network</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rosewood: #65000b;
+      --copper: #B07A5A;
+      --parchment: #F4EFEA;
+      --navy: #1A222E;
+    }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: var(--parchment);
+      color: var(--navy);
+    }
+    .font-serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .bg-parchment { background-color: var(--parchment); }
+    .text-rosewood { color: var(--rosewood); }
+    .bg-rosewood { background-color: var(--rosewood); }
+    .text-copper { color: var(--copper); }
+    .border-copper { border-color: var(--copper); }
+    
+    /* Subtle paper texture overlay */
+    .paper-texture {
+      position: relative;
+    }
+    .paper-texture::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+      z-index: 100;
+    }
+  </style>
 
-		* { box-sizing: border-box; }
-
-		body {
-			margin: 0;
-			min-height: 100vh;
-			font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
-			color: var(--text);
-			background: radial-gradient(circle at 20% 20%, rgba(248, 177, 149, 0.08), transparent 30%),
-									radial-gradient(circle at 80% 10%, rgba(135, 225, 197, 0.08), transparent 30%),
-									radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.05), transparent 35%),
-									#050712;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 48px 20px;
-		}
-
-		.shell {
-			width: min(1200px, 100%);
-			background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-			border: 1px solid rgba(255, 255, 255, 0.06);
-			border-radius: 24px;
-			position: relative;
-			overflow: hidden;
-			box-shadow: var(--shadow);
-			padding: 48px;
-			isolation: isolate;
-		}
-
-		.shell::before,
-		.shell::after {
-			content: '';
-			position: absolute;
-			filter: blur(50px);
-			opacity: 0.8;
-			z-index: -1;
-			transform: rotate(-6deg);
-		}
-
-		.shell::before {
-			width: 240px;
-			height: 240px;
-			background: radial-gradient(circle, rgba(248, 177, 149, 0.3), transparent 60%);
-			top: -60px;
-			right: -80px;
-		}
-
-		.shell::after {
-			width: 260px;
-			height: 260px;
-			background: radial-gradient(circle, rgba(135, 225, 197, 0.25), transparent 60%);
-			bottom: -70px;
-			left: -90px;
-		}
-
-		header {
-			display: flex;
-			align-items: center;
-			gap: 16px;
-			margin-bottom: 32px;
-		}
-
-		header img {
-			width: 56px;
-			height: 56px;
-			border-radius: 12px;
-			background: rgba(255, 255, 255, 0.06);
-			padding: 10px;
-			border: 1px solid rgba(255, 255, 255, 0.08);
-		}
-
-		header .title {
-			font-size: 1.8rem;
-			letter-spacing: 0.5px;
-			font-weight: 700;
-		}
-
-		.grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-			gap: 28px;
-			align-items: center;
-		}
-
-		.hero {
-			display: flex;
-			flex-direction: column;
-			gap: 18px;
-		}
-
-		.eyebrow {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			font-size: 0.95rem;
-			padding: 8px 14px;
-			border-radius: 999px;
-			background: rgba(135, 225, 197, 0.12);
-			color: var(--accent-2);
-			width: fit-content;
-			border: 1px solid rgba(135, 225, 197, 0.2);
-		}
-
-		h1 {
-			margin: 0;
-			font-size: clamp(2.4rem, 4vw, 3.4rem);
-			line-height: 1.1;
-			letter-spacing: -0.6px;
-		}
-
-		p.lead {
-			margin: 0;
-			color: var(--muted);
-			font-size: 1.05rem;
-			line-height: 1.6;
-		}
-
-		.actions {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 12px;
-			margin-top: 12px;
-		}
-
-		.btn {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
-			padding: 14px 20px;
-			border-radius: 14px;
-			border: 1px solid transparent;
-			font-weight: 600;
-			letter-spacing: 0.2px;
-			cursor: pointer;
-			text-decoration: none;
-			transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
-		}
-
-		.btn.primary {
-			background: linear-gradient(120deg, var(--accent), #ffd6a5);
-			color: #1e120d;
-			box-shadow: 0 12px 24px rgba(248, 177, 149, 0.3);
-		}
-
-		.btn.secondary {
-			background: rgba(255, 255, 255, 0.06);
-			color: var(--text);
-			border-color: rgba(255, 255, 255, 0.08);
-			backdrop-filter: blur(6px);
-		}
-
-		.btn:hover { transform: translateY(-2px); }
-		.btn:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
-
-		.panel {
-			background: var(--panel);
-			border: 1px solid rgba(255, 255, 255, 0.06);
-			border-radius: var(--radius);
-			padding: 20px;
-			box-shadow: var(--shadow);
-		}
-
-		.stats {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-			gap: 12px;
-			margin-top: 12px;
-		}
-
-		.stat h3 {
-			margin: 0;
-			font-size: 2rem;
-			color: var(--accent-2);
-		}
-
-		.stat p {
-			margin: 4px 0 0;
-			color: var(--muted);
-			font-size: 0.95rem;
-		}
-
-		.list {
-			display: grid;
-			gap: 12px;
-			margin-top: 12px;
-		}
-
-		.list-item {
-			display: flex;
-			align-items: flex-start;
-			gap: 12px;
-		}
-
-		.dot {
-			width: 10px;
-			height: 10px;
-			margin-top: 7px;
-			border-radius: 50%;
-			background: var(--accent);
-			box-shadow: 0 0 0 6px rgba(248, 177, 149, 0.15);
-			flex-shrink: 0;
-		}
-
-		footer {
-			margin-top: 28px;
-			display: flex;
-			gap: 14px;
-			flex-wrap: wrap;
-			color: var(--muted);
-			font-size: 0.95rem;
-		}
-
-		@media (max-width: 720px) {
-			body { padding: 32px 18px; }
-			.shell { padding: 32px 22px; }
-			header img { width: 48px; height: 48px; }
-			header .title { font-size: 1.5rem; }
-		}
-	</style>
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-B0rbUU9J.js"></script>
 </head>
-<body>
-	<main class="shell">
-		<header>
-			<img src="logo.png" alt="Rosewood Academy logo">
-			<div class="title">Rosewood Academy</div>
-		</header>
-
-		<section class="grid">
-			<div class="hero">
-				<span class="eyebrow">Nurturing bright minds</span>
-				<h1>Learning that blends curiosity, character, and community.</h1>
-				<p class="lead">Rosewood Academy is a place where students are guided to think boldly, collaborate deeply, and grow with purpose. Our campus pairs inspiring educators with hands-on programs across arts, sciences, and leadership.</p>
-				<div class="actions">
-					<a class="btn primary" href="#">Book a visit</a>
-					<a class="btn secondary" href="#">Download prospectus</a>
-				</div>
-			</div>
-
-			<div class="panel">
-				<div class="stats">
-					<div class="stat">
-						<h3>12:1</h3>
-						<p>Student to teacher ratio for focused, personalized attention.</p>
-					</div>
-					<div class="stat">
-						<h3>92%</h3>
-						<p>Graduates accepted to their first-choice high schools.</p>
-					</div>
-				</div>
-				<div class="list">
-					<div class="list-item">
-						<span class="dot"></span>
-						<p>Signature programs in STEM studios, visual arts labs, and debate.</p>
-					</div>
-					<div class="list-item">
-						<span class="dot"></span>
-						<p>Character education woven into daily life: empathy, stewardship, leadership.</p>
-					</div>
-					<div class="list-item">
-						<span class="dot"></span>
-						<p>Expansive grounds with nature walks, maker spaces, and collaborative commons.</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<footer>
-			<span>Admissions open for Fall 2026.</span>
-			<span>Schedule a tour or speak with our admissions team.</span>
-		</footer>
-	</main>
+<body class="paper-texture">
+  <div id="root"></div>
 </body>
 </html>
